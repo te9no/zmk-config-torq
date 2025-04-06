@@ -1,0 +1,58 @@
+#include <dt-bindings/zmk/bt.h>
+#include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+#include "Torq_pinctrl.dtsi"
+#include "Torq.dtsi"
+#include <dt-bindings/zmk/matrix_transform.h>
+#include <behaviors/rgbled_widget.dtsi>
+
+/ {
+    chosen {
+        zephyr,display = &oled;
+    };
+
+    default_transform: keymap_transform_0 {
+      compatible = "zmk,matrix-transform";
+      columns = <7>;
+      rows = <7>;
+
+      map = <
+        RC(0,7)   RC(1,7)   RC(2,7)   RC(3,7)   RC(4,7)   RC(5,7)   RC(6,7)   RC(0,6)   RC(1,6)   RC(2,6)   RC(3,6)
+        RC(0,5)   RC(1,5)   RC(2,5)   RC(3,5)   RC(4,5)   RC(6,5)   RC(7,5)   RC(0,4)   RC(1,4)   RC(2,4)   RC(3,4)
+        RC(0,3)   RC(1,3)   RC(2,3)   RC(4,3)   RC(5,3)   RC(6,3)   RC(7,3)   RC(0,2)   RC(1,2)   RC(3,2)   RC(4,2)   
+        RC(0,1)   RC(2,1)             RC(3,1)   RC(4,1)                                           RC(5,1)   RC(6,1)   RC(7,1) 
+        >;
+    };
+    
+    aliases {
+        led-red = &led0;
+        led-green = &led1;
+        led-blue = &led2;
+    };
+
+    leds {
+        compatible = "gpio-leds";
+        status = "okay";
+        led0: led_0 {
+            gpios = <&gpio0 26 GPIO_ACTIVE_LOW>;  // red LED, connected to P0.26
+        };
+        led1: led_1 {
+            gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;  // green LED, connected to P0.30
+        };
+        led2: led_2 {
+            gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;  // blue LED, connected to P0.06
+        };
+    };
+
+    trackball_listener {
+        status = "okay";
+        compatible = "zmk,input-listener";
+        device = <&trackball>;
+        input-processors = <&zip_temp_layer 3 1000>;
+        scroll {
+            layers = <2>;
+            input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 1 16>, <&zip_xy_to_scroll_mapper>;
+        };
+    };
+}; 

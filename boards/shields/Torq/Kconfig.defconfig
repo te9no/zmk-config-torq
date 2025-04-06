@@ -1,0 +1,4 @@
+if SHIELD_TORQ
+    config ZMK_KEYBOARD_NAME
+        default "Torq"
+endif
