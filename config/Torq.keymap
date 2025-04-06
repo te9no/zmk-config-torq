@@ -61,7 +61,7 @@
 
         bt_layer {
             bindings = <
-&trans           &bt BT_NXT       &bt BT_CLR　     &bt BT_SEL 2
+&trans           &bt BT_NXT       &bt BT_CLR       &bt BT_CLR_ALL
             >;
         };
     };
