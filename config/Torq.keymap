@@ -16,10 +16,10 @@
 
 / {
   chosen {
-    zmk,physical-layout = &kat_physical_layout;
+    zmk,physical-layout = &Torq_physical_layout;
   };
 
-  kat_physical_layout: kat_physical_layout {
+  Torq_physical_layout: Torq_physical_layout {
       compatible = "zmk,physical-layout";
       display-name = "Default";
       transform = <&default_transform>;
@@ -37,37 +37,31 @@
 
         default_layer {
             bindings = <
-&kp CAPS         &kp Q            &kp W            &kp E                                                    &kp LEFT         &kp DOWN          &kp RIGHT
+&lt 1 SPACE      &kp ENTER        &lt 4 PG_UP      &lt 4 PG_DN
             >;
         };
 
         function_layer {
             bindings = <
-&kp GRAVE        &kp PG_UP        &kp UP           &kp PG_DN                                            &trans           &trans            &trans
-            >;
-        };
-
-        num_layer {
-            bindings = <
-&kp ESC           &kp N1          &kp N2           &kp N3                                                  &trans           &trans            &trans
+&trans           &kp ENTER        &kp UP           &kp PG_DN
             >;
         };
 
         mouse_layer {
             bindings = <
-&trans           &trans           &trans           &trans                                                            &trans           &trans            &trans
+&trans           &mkp MB1         &mkp MB2         &mkp MB3
             >;
         };
 
         scroll_layer {
             bindings = <
-&trans           &trans           &trans           &trans                                                        &trans           &trans            &trans
+&trans           &mkp MB1         &mkp MB2         &mkp MB3
             >;
         };
 
         bt_layer {
             bindings = <
-&trans           &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2                                                   &trans           &trans           &trans
+&trans           &bt BT_NXT       &bt BT_CLR　     &bt BT_SEL 2
             >;
         };
     };
