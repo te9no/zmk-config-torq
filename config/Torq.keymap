@@ -4,11 +4,11 @@
 #include <dt-bindings/zmk/bt.h>
 #include <physical_layouts.dtsi>
 
+#define BASE 0
 #define FUNCTION 1
-#define NUM 2
-#define MOUSE 3
-#define SCROLL 4
-#define BT 5
+#define MOUSE 2
+#define SCROLL 3
+#define BT 4
 
 &mt {
     tapping-term-ms = <500>;
