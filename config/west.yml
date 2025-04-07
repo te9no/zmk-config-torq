@@ -21,9 +21,11 @@ manifest:
     - name: zmk-rgbled-widget
       remote: caksoylar
       revision: main
+      path: modules/zmk/zmk-rgbled-widget
     - name: zmk-pmw3610-driver
       remote: badjeff
       revision: main
+      path: modules/zmk/zmk-pmw3610-driver.
     # Temporarily overload Zephyr until
     # https://github.com/zmkfirmware/zephyr/pull/40 is merged.
     - name: zephyr
